@@ -6,11 +6,11 @@ import './task.css';
 
 export default class Task extends Component {
   render() {
-    const { label, time, onToggleDone, onToggleEdited, onDeleted } = this.props;
+    const { label, time, done, onToggleDone, onToggleEdited, onDeleted } = this.props;
     const cretedTime = formatDistanceToNow(time);
     return (
       <div className="view">
-        <input className="toggle" type="checkbox" onChange={onToggleDone} />
+        <input className="toggle" type="checkbox" checked={done} onChange={onToggleDone} />
         <label>
           <span className="description">{label}</span>
           <span className="created">created {cretedTime} ago</span>
@@ -25,6 +25,7 @@ export default class Task extends Component {
 Task.defualtProps = {
   label: "",
   time: "",
+  done: "false",
   onToggleDone: () => {},
   onToggleEdited: () => {},
   onDeleted: () => {},
@@ -33,6 +34,7 @@ Task.defualtProps = {
 Task.propTypes = {
   label: PropTypes.string,
   time: PropTypes.any,
+  done: PropTypes.bool,
   onToggleDone: PropTypes.func,
   onToggleEdited: PropTypes.func,
   onDeleted: PropTypes.func,

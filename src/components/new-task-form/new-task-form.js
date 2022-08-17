@@ -15,7 +15,7 @@ export default class NewTaskForm extends Component {
   };
 
   onSubmit = (e) => {
-    if (e.keyCode === 13) {
+    if (e.keyCode === 13 && this.state.label !== '') {
       this.props.addItem(this.state.label);
       this.setState({
         label: '',
@@ -41,6 +41,6 @@ NewTaskForm.defualtProps = {
   addItem: () => {},
 };
 
-NewTaskForm.PropTypes = {
+NewTaskForm.propTypes = {
   addItem: PropTypes.func,
 };

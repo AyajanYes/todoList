@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 
 export default class TaskEdit extends Component {
   state = {
-    label: '',
+    label: this.props.itemText,
   };
 
   onLabelChange = (e) => {
@@ -36,6 +36,8 @@ TaskEdit.defualtProps = {
   editItem: () => {},
 };
 
-TaskEdit.PropTypes = {
+TaskEdit.propTypes = {
+  itemId: PropTypes.number.isRequired,
+  itemText: PropTypes.string.isRequired,
   editItem: PropTypes.func,
 };

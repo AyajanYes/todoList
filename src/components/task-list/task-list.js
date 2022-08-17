@@ -1,3 +1,4 @@
+/* eslint-disable no-trailing-spaces */
 import React from "react";
 import { PropTypes } from "prop-types";
 
@@ -39,11 +40,14 @@ const TaskList = ({
         <Task
           label={label}
           time={time}
+          done={done}
           onToggleDone={() => onToggleDone(id)}
           onToggleEdited={() => onToggleEdited(id)}
           onDeleted={() => onDeleted(id)}
         />
-        <TaskEdit itemId={id} editItem={(idx, text) => editItem(idx, text)} />
+        <TaskEdit itemId={id} 
+                  itemText={label} 
+                  editItem={(idx, text) => editItem(idx, text)} />
       </li>
     );
   });
@@ -60,7 +64,7 @@ TaskList.defualtProps = {
   onDeleted: () => {},
 };
 
-TaskList.PropTypes = {
+TaskList.propTypes = {
   todos: PropTypes.arrayOf(
     PropTypes.shape({
       label: PropTypes.string,
@@ -70,7 +74,7 @@ TaskList.PropTypes = {
       id: PropTypes.number,
     }),
   ),
-  filter: PropTypes.func,
+  filter: PropTypes.string,
   onToggleDone: PropTypes.func,
   onToggleEdited: PropTypes.func,
   editItem: PropTypes.func,
